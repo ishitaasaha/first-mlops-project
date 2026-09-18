@@ -30,6 +30,8 @@ We use a Random Forest Classifier trained on the **Pima Indians Diabetes Dataset
 ### 1. Clone the Repo
 
 ```bash
+mkdir first-mlops
+cd first-mlops
 git clone https://github.com/iam-veeramalla/first-mlops-project.git
 cd first-mlops-project
 ```
@@ -37,14 +39,17 @@ cd first-mlops-project
 ### 2. Create Virtual Environment
 
 ```
-python3 -m venv .mlops
-source .mlops/bin/activate
+python -m venv .mlops
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser #use only when got this error \Activate.ps1 cannot be loaded because running scripts is disabled on this system
+.\.mlops\Scripts\Activate.ps1 #for windows
+source .mlops/bin/activate  #optional
 ```
 
 ### 3. Install Dependencies
 
 ```
 pip install -r requirements.txt
+pip install pandas scikit-learn joblib numpy fastapi uvicorn
 ```
 
 ## Train the Model
@@ -57,6 +62,12 @@ python train.py
 
 ```
 uvicorn main:app --reload
+```
+
+## Test the API Locally
+
+```
+copy the address you got after ran the above command and paste in the browser with /docs
 ```
 
 ### Sample Input for /predict
